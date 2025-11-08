@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Update Song | TUNEVAULT</title>
+  <link rel="stylesheet" href="/css/update_song.css">
+</head>
+<body>
+  <div class="page">
+    <header>
+      <h1>🎵 Update Song Details</h1>
+    </header>
+
+    <!-- Verify Song Form -->
+    <section id="verifySection">
+      <form id="verifyForm">
+        <label for="song_name">Enter Song Name to Verify:</label>
+        <input type="text" id="song_name" name="song_name" required>
+        <button type="submit">Verify</button>
+      </form>
+    </section>
+
+    <hr />
+
+    <!-- Update Form -->
+    <section id="updateSection" style="display:none;">
+      <h2>Song Information</h2>
+
+      <form id="updateForm" class="form">
+        <div class="row">
+          <div class="field">
+            <label>Song Name:</label>
+            <input type="text" id="song_name_edit" name="song_name_edit" readonly>
+          </div>
+
+          <div class="field">
+            <label>Type:</label>
+            <input type="text" id="type" name="type">
+          </div>
+
+          <div class="field">
+            <label>Genre:</label>
+            <input type="text" id="genre" name="genre">
+          </div>
+
+          <div class="field">
+            <label>Duration:</label>
+            <div id="durationContainer" class="duration-box">
+              <input type="number" id="duration_hr" min="0" placeholder="hr">
+              <span>hr :</span>
+              <input type="number" id="duration_min" min="0" max="59" placeholder="min">
+              <span>min :</span>
+              <input type="number" id="duration_sec" min="0" max="59" placeholder="sec">
+              <span>sec</span>
+            </div>
+          </div>
+        </div>
+
+        <hr />
+
+        <div class="group">
+          <label>Owners:</label>
+          <div id="ownerInputs" class="dynamic-container"></div>
+          <button type="button" id="addOwnerBtn">+ Add Owner</button>
+        </div>
+
+        <div class="group">
+          <label>Artists:</label>
+          <div id="artistInputs" class="dynamic-container"></div>
+          <button type="button" id="addArtistBtn">+ Add Artist</button>
+        </div>
+
+        <div class="group">
+          <label>Lyricists:</label>
+          <div id="lyricistInputs" class="dynamic-container"></div>
+          <button type="button" id="addLyricistBtn">+ Add Lyricist</button>
+        </div>
+
+        <div class="group">
+          <label>Producers:</label>
+          <div id="producerInputs" class="dynamic-container"></div>
+          <button type="button" id="addProducerBtn">+ Add Producer</button>
+        </div>
+
+        <div class="group">
+          <label>Contributors:</label>
+          <div id="contributorInputs" class="dynamic-container"></div>
+          <button type="button" id="addContributorBtn">+ Add Contributor</button>
+        </div>
+
+        <div class="actions">
+          <button id="submitBtn" type="submit">Update</button>
+        </div>
+      </form>
+    </section>
+  </div>
+  <script type="module" src="/js/update_song.js"></script>
+
+  <div id="modalSuccess" class="modal">
+    <div class="modal-content">
+      <p id="modalMessage">bye</p>
+    </div>
+  </div>
+</body>
+</html>

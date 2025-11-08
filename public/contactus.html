@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact Us | The Urban Planting</title>
+  <link rel="stylesheet" href="./css/emailphoto.css">
+  <link rel="stylesheet" href="./css/contactus.css"/>
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <div class="name logo-text">
+        <span class="gradient-logo">TUNEVAULT</span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="/artists">Artists</a></li>
+        <li><a href="/songs">Songs</a></li>
+        <li><a href="/albums">Albums</a></li>
+        <li><a href="contactus.html" class="active">Contact Us</a></li>
+      </ul>
+      <a href="/login.html" class="login-btn">Login</a>
+    </nav>
+  </header>
+  <!-- Hero Banner -->
+  <section class="hero">
+    <img src="./images/contactus.jpg" alt="Contact Us Banner"/>
+  </section>
+
+  <!-- Contact Info Section -->
+  <section class="contact-info">
+    <h2>📞 Contact Information</h2>
+    <div class="info-boxes">
+      <div class="info-box">
+        <h3>SWAYAM PRABHU</h3>
+        <p>Email: 23ce172.swayam@pccegoa.edu.in</p>
+        <p>Phone: 8208921037</p>
+      </div>
+      <div class="info-box">
+        <h3>VEDANT SHIRODKER</h3>
+        <p>Email: 23ce178.vedant@pccegoa.edu.in</p>
+        <p>Phone: 8208223680</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Feedback Form -->
+  <section class="feedback">
+    <h2>🎶 Feedback Form</h2>
+    <div class="feedback-container">
+      <form id="feedback-form">
+        
+        <label for="fullName">Full Name</label>
+        <input type="text" id="fullName" name="fullName" placeholder="Enter your full name" required/>
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email" required/>
+
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required/>
+
+        <label for="suggestion">Your Suggestions</label>
+        <textarea id="suggestion" name="suggestion" placeholder="What changes would you like?" rows="4"></textarea>
+
+        <button type="submit">Send Feedback</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Wikipedia Iframe -->
+  <section class="wiki">
+    <h2>Learn More 🎧</h2>
+    <div class="wiki-frame">
+      <iframe src="https://en.wikipedia.org/wiki/List_of_best-selling_albums"></iframe>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 Tunevault</p>
+  </footer>
+
+  <script type="module" src="./js/auth.js"></script>
+  <script type="module" src="/js/contactus.js"></script>
+</body>
+</html>

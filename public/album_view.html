@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Album View</title>
+  <link rel="stylesheet" href="/css/album_view.css">
+</head>
+<body>
+  <div class="container">
+    <div class="album-header">
+      <h1 id="albumName">Loaddata</h1>
+      <h2 id="artistName"></h2>
+    </div>
+
+    <h3>Songs in this Album</h3>
+    <ul id="songList"></ul>
+
+    <button onclick="history.back()">Go Back</button>
+  </div>
+
+  <script>
+    async function loadAlbum() {
+      const albumId = window.location.pathname.split("/").pop();
+      const res = await fetch(`/api/albums/${albumId}`);
+      const data = await res.json();
+
+      if (!res.ok) {
+        alert(data.error || "Album not found");
+        return;
+      }
+
+      document.getElementById("albumName").textContent = data.album.album_name;
+      document.getElementById("artistName").textContent = `Main Artist: ${data.album.main_artist_name}`;
+
+      const songList = document.getElementById("songList");
+      songList.innerHTML = "";
+
+      if (data.songs.length === 0) {
+        const li = document.createElement("li");
+        li.textContent = "No songs in this album yet.";
+        songList.appendChild(li);
+      } else {
+        data.songs.forEach((song, index) => {
+          const li = document.createElement("li");
+          li.textContent = `${index + 1}. ${song.song_name} (${song.genre || "Unknown"})`;
+          songList.appendChild(li);
+        });
+      }
+    }
+    loadAlbum();
+  </script>
+</body>
+</html>

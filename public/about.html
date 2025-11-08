@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us | TUNEVAULT</title>
+  <link rel="stylesheet" href="./css/emailphoto.css">
+  <link rel="stylesheet" href="./css/about.css">
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <div class="name logo-text">
+        <span class="gradient-logo">TUNEVAULT</span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html" class="active">About Us</a></li>
+        <li><a href="/artists">Artists</a></li>
+        <li><a href="/songs">Songs</a></li>
+        <li><a href="/albums">Albums</a></li>
+        <li><a href="contactus.html">Contact Us</a></li>
+      </ul>
+      <a href="/login.html" class="login-btn">Login</a>
+    </nav>
+  </header>
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="overlay">
+      <div class="hero-block">
+        <h1>About Us</h1>
+        <p>
+          Discover our vision and the people who created 
+          <strong>TUNEVAULT</strong> — your space to share music with the world.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mission Section -->
+  <section class="mission">
+    <div class="container">
+      <div class="mission-block">
+        <h2>🎶 Our Vision</h2>
+        <p>
+          At <strong>TUNEVAULT</strong>, we believe music is more than sound—it’s a universal language that connects people, inspires creativity, and tells stories. Our mission is to provide a space where artists can showcase their songs, albums, and talent while giving listeners an easy way to explore fresh music.
+        </p>
+        <p>
+          Whether you’re an emerging artist or an established musician, our portal helps you register your music and share it with a growing community. By making music discovery easier and supporting artists, we aim to build a platform where every voice can be heard, and every song has a home.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Songs Registered Section -->
+  <section class="songs-registered">
+    <div class="container">
+      <div class="songs-count-block">
+        <h2><span id="songs-count">0</span> Songs Registered</h2>
+      </div>
+    </div>
+  </section>
+
+  <!-- Creators Section -->
+  <section class="creators">
+    <div class="container">
+      <h2> Meet the Creators </h2>
+
+      <!-- Creator 1 -->
+      <div class="creator-block">
+        <div class="creator-img">
+          <img src="./images/swayam.jpg" alt="Creator 1">
+        </div>
+        <div class="creator-text">
+          <h3>SWAYAM PRABHU</h3>
+          <p>
+            A music enthusiast and creative developer who believes in empowering artists through technology. With a strong passion for building digital platforms, he focuses on creating user-friendly experiences where musicians can share their work and grow their audience.
+          </p>
+        </div>
+      </div>
+
+      <!-- Creator 2 -->
+      <div class="creator-block reverse">
+        <div class="creator-img">
+          <img src="./images/vedant.jpg" alt="Creator 2">
+        </div>
+        <div class="creator-text">
+          <h3>VEDANT SHIRODKAR</h3>
+          <p>
+            A passionate innovator with a love for both coding and music. He envisions TUNEVAULT as a bridge between creativity and technology, helping artists showcase their songs, albums, and stories in one place. His goal is to make music sharing accessible to all.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 TUNEVAULT</p>
+  </footer>
+
+  <!-- Internal JS to fetch songs count -->
+  <script>
+    async function fetchSongsCount() {
+      try {
+        const response = await fetch('/api/songs/count');
+        const data = await response.json();
+        document.getElementById('songs-count').innerText = data.count;
+      } catch (error) {
+        console.error('Error fetching songs count:', error);
+      }
+    }
+    fetchSongsCount();
+  </script>
+  <script type="module" src="./js/auth.js"></script>
+</body>
+</html>

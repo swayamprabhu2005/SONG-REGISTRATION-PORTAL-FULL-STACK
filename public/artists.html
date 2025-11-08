@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TUNEVAULT | Artists</title>
+    <link rel="stylesheet" href="./css/emailphoto.css" />
+    <link rel="stylesheet" href="/css/artists.css" />
+  </head>
+  <body>
+    <header>
+      <nav class="navbar">
+        <div class="name logo-text">
+          <span class="gradient-logo">TUNEVAULT</span>
+        </div>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="/artists" class="active">Artists</a></li>
+          <li><a href="/songs">Songs</a></li>
+          <li><a href="/albums">Albums</a></li>
+          <li><a href="contactus.html">Contact Us</a></li>
+        </ul>
+        <a href="/login.html" class="login-btn">Login</a>
+      </nav>
+    </header>
+    <main>
+      <section class="artists-section" id="artists-section">
+        <div class="artist-pane">
+          <h1>Artists</h1>
+          <div id="artistGrid" class="artist-grid"></div>
+        </div>
+
+        <div id="artistSongs" class="song-list">
+          <h2>Select an artist to view songs 🎶</h2>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      async function loadArtists() {
+        const res = await fetch("/artists/api/list");
+        const artists = await res.json();
+        const grid = document.getElementById("artistGrid");
+        grid.innerHTML = "";
+        artists.forEach((a) => {
+          const card = document.createElement("div");
+          card.className = "artist-card";
+          card.innerHTML = `
+          <div class="artist-info">
+            <h3>${a.artist_name}</h3>
+            <button class="view-btn" onclick="showSongs('${a.artist_name}')">View Songs</button>
+          </div>`;
+          grid.appendChild(card);
+        });
+      }
+
+      async function showSongs(artistName) {
+        const res = await fetch(
+          "/artists/api/" + encodeURIComponent(artistName) + "/songs"
+        );
+        const data = await res.json();
+        const list = document.getElementById("artistSongs");
+        list.style.display = "block";
+        list.innerHTML = `<h2>Songs by ${data.artistName}</h2>
+      <button class="back-btn" onclick="scrollToArtists()">View Artists</button>`;
+        data.songs.forEach((song) => {
+          list.innerHTML += `
+          <div class="song-item">
+            <span>${song.song_name}</span>
+            ${
+              song.role === "Main Artist"
+                ? '<span class="song-tag">Main Artist</span>'
+                : ""
+            }
+          </div>`;
+        });
+        document.getElementById("artistSongs").scrollIntoView({ behavior: "smooth" });
+      }
+
+      function scrollToArtists() {
+        document.getElementById("artists-section").scrollIntoView({ behavior: "smooth" });
+      }
+
+      loadArtists();
+    </script>
+    <script type="module" src="./js/auth.js"></script>
+  </body>
+</html>

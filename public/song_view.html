@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Song Details | TuneVault</title>
+    <link rel="stylesheet" href="/css/song_view.css" />
+  </head>
+  <body>
+    <div class="song-view-container">
+      <div class="lhs">
+        <h1 id="songName"></h1>
+
+        <div class="more-songs-section">
+          <h3>More Songs Like This</h3>
+          <div id="relatedSongs" class="related-box"></div>
+        </div>
+      </div>
+
+      <div class="rhs">
+        <h2>Details</h2>
+        <p><b>Genre:</b> <span id="genre"></span></p>
+        <p><b>Album:</b> <span id="album"></span></p>
+        <p><b>Duration:</b> <span id="duration"></span></p>
+        <p><b>Type:</b> <span id="type"></span></p>
+        <p><b>Owners:</b> <span id="owners"></span></p>
+        <p><b>Artists:</b> <span id="artists"></span></p>
+        <p><b>Lyricists:</b> <span id="lyricists"></span></p>
+        <p><b>Producers:</b> <span id="producers"></span></p>
+        <p><b>Contributors:</b> <span id="contributors"></span></p>
+
+        <button class="back-btn" onclick="window.history.back()">Back</button>
+      </div>
+    </div>
+
+    <script type="module" src="/js/song_view.js"></script>
+  </body>
+</html>

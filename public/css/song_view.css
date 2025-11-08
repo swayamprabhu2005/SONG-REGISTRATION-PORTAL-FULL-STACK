@@ -1,0 +1,126 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+.song-view-container {
+  display: flex;
+  gap: 2rem;
+  padding: 2rem;
+  background: rgba(212, 146, 179, 0.637);
+  min-height: 100vh;
+  color: rgb(230, 200, 200);
+}
+
+.lhs {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+#songName {
+  background: linear-gradient(135deg, #00ffff, #ff69b4);
+  color: #0b0c10;
+  border-radius: 12px;
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: 700;
+  padding: 2rem 1rem;
+  box-shadow: 0 4px 14px rgba(255, 105, 180, 0.3);
+}
+
+.more-songs-section {
+  background: linear-gradient(135deg, #00ffff, #ffb6c1);
+  border-radius: 10px;
+  padding: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  flex-grow: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.more-songs-section h3 {
+  color: #101218;
+  font-weight: 700;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.related-box {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  overflow-y: auto;
+  max-height: 50vh;
+  padding-right: 1rem;
+}
+
+.related-song {
+  background:linear-gradient(90deg, #f5b57a, #e0f7fa, #fce4ec);
+  color: #b18ef1e8 ;
+  font-weight: 600;
+  text-align: center;
+  border-radius: 8px;
+  padding: 0.8rem;
+  cursor: pointer;
+  word-wrap: break-word;
+  white-space: normal;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.25);
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.related-song:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 14px rgba(255, 105, 180, 0.4);
+}
+
+.more-songs-section {
+  overflow-x: hidden;
+}
+
+.rhs {
+  flex: 2;
+  background: #ffe6f0; 
+  color: #111;
+  padding: 2rem 2.5rem;
+  border-radius: 12px;
+  overflow-y: auto;
+  box-shadow: 0 4px 18px rgba(255, 182, 193, 0.4);
+}
+
+.rhs h2 {
+  color: #ff69b4;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.rhs p {
+  font-size: 1.15rem;
+  margin: 0.6rem 0;
+  line-height: 1.7;
+}
+
+.rhs b {
+  color: #ff69b4;
+  font-weight: 700;
+}
+
+.back-btn {
+  display: inline-block;
+  margin-top: 1.5rem;
+  padding: 1.0rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  background: linear-gradient(135deg, #1c3131, #350e21);
+  color: #ffffff;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.back-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(255, 105, 180, 0.6);
+}

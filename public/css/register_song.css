@@ -1,0 +1,325 @@
+/* 🎶 TuneVault | Register Song – Modern Pink–Cyan Theme */
+
+/* ---------- Base ---------- */
+body {
+  font-family: "Poppins", Arial, sans-serif;
+  background: linear-gradient(135deg, #e0f7fa, #fce4ec);
+  margin: 0;
+  padding: 24px;
+  color: #222;
+  min-height: 100vh;
+  background-attachment: fixed;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.note {
+  font-size: 0.8rem;
+  color: #800000;            /* pure maroon hex */
+  margin: 4px 0 8px 4px;
+  font-style: italic;
+  letter-spacing: 0.2px;
+  opacity: 0.85;
+}
+
+/* ---------- Page Container ---------- */
+.page {
+  max-width: 980px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.85);
+  padding: 28px 32px;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(10px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.page:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+}
+
+/* ---------- Header ---------- */
+header h1 {
+  margin: 0 0 18px 0;
+  text-align: center;
+  background: linear-gradient(90deg, #ff6ec4, #4fc3f7);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 700;
+  font-size: 1.9rem;
+}
+
+/* ---------- Form ---------- */
+.form {
+  display: block;
+  background: rgba(255, 255, 255, 0.75);
+  padding: 24px;
+  border-radius: 14px;
+  box-shadow: 0 4px 16px rgba(255, 105, 180, 0.12);
+  border: 1px solid rgba(255, 105, 180, 0.2);
+  backdrop-filter: blur(6px);
+}
+
+/* Two-column layout for main song info */
+.row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px 40px;
+  margin-bottom: 20px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.field label {
+  font-weight: 600;
+  font-size: 14px;
+  color: #333;
+}
+
+.field input[type="text"] {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1.5px solid #d0d7de;
+  background: linear-gradient(135deg, #fff, #fce4ec);
+  transition: all 0.25s ease;
+}
+
+.field input:focus {
+  border-color: #ff80ab;
+  box-shadow: 0 0 0 3px rgba(255, 128, 171, 0.25);
+  background: #fff;
+  outline: none;
+}
+
+/* Soft hover feedback */
+.field input:hover {
+  border-color: #4fc3f7;
+}
+
+/* ---------- Duration Field ---------- */
+.duration-box {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.7);
+  border: 1.5px solid #d0d7de;
+  border-radius: 8px;
+  padding: 8px 12px;
+  transition: all 0.25s ease;
+}
+
+.duration-box input {
+  width: 45px;
+  text-align: center;
+  padding: 6px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-weight: 500;
+  background: #fff;
+  transition: 0.25s;
+}
+
+.duration-box input:focus {
+  border-color: #4fc3f7;
+  box-shadow: 0 0 0 3px rgba(79, 195, 247, 0.2);
+  outline: none;
+}
+
+.duration-box span {
+  font-size: 14px;
+  font-weight: 600;
+  color: #444;
+}
+
+/* ---------- Dynamic Groups ---------- */
+.group {
+  margin-top: 20px;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.7),
+    rgba(255, 224, 230, 0.5)
+  );
+  border-radius: 10px;
+  padding: 16px;
+  box-shadow: 0 2px 8px rgba(79, 195, 247, 0.1);
+  border: 1px solid rgba(79, 195, 247, 0.15);
+}
+
+.group label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #222;
+}
+
+.dynamic-container {
+  margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.dynamic-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dynamic-row input[type="text"] {
+  flex: 1;
+  padding: 8px 10px;
+  border-radius: 6px;
+  border: 1px solid #d0d7de;
+  background-color: #fff;
+  transition: 0.25s;
+}
+
+.dynamic-row input[type="text"]:focus {
+  border-color: #4fc3f7;
+  box-shadow: 0 0 0 3px rgba(79, 195, 247, 0.2);
+  outline: none;
+}
+
+/* Remove Button */
+.remove-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  color: #ff4081;
+  padding: 6px;
+  border-radius: 4px;
+  transition: 0.25s;
+}
+
+.remove-btn:hover {
+  color: #e91e63;
+  background: rgba(233, 30, 99, 0.08);
+}
+
+/* ---------- Action Buttons ---------- */
+.actions {
+  margin-top: 24px;
+  display: flex;
+  justify-content: center;
+}
+
+button#submitBtn {
+  padding: 12px 26px;
+  border-radius: 10px;
+  border: none;
+  background: linear-gradient(135deg, #ff6ec4, #4fc3f7);
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+  transition: all 0.3s ease;
+}
+
+button#submitBtn:hover {
+  background: linear-gradient(135deg, #ff4081, #00bcd4);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
+}
+
+hr {
+  border: none;
+  border-top: 1.5px dashed rgba(0, 0, 0, 0.08);
+  margin: 18px 0;
+}
+
+/* ---------- Success Modal ---------- */
+#successModal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(6px);
+  z-index: 9999;
+  justify-content: center;
+  align-items: center;
+  animation: fadeIn 0.3s ease forwards;
+}
+
+#successModal .modal-content {
+  background: #fff;
+  padding: 2rem 2.5rem;
+  border-radius: 14px;
+  text-align: center;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+  max-width: 420px;
+  width: 90%;
+  animation: popIn 0.35s ease forwards;
+}
+
+#successModal h2 {
+  font-weight: 600;
+  font-size: 1.3rem;
+  margin: 0;
+  margin-bottom: 1.5rem;
+  background: linear-gradient(90deg, #4fc3f7, #ff6ec4);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.modal-buttons button {
+  background: linear-gradient(90deg, #f06, #09f);
+  color: white;
+  border: none;
+  padding: 0.6rem 1.4rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.modal-buttons button:hover {
+  opacity: 0.85;
+  transform: translateY(-2px);
+}
+
+body.blurred main,
+body.blurred header {
+  filter: blur(5px);
+  pointer-events: none;
+  user-select: none;
+}
+/* ---------- Create Album Button ---------- */
+#createAlbumBtn {
+  background: linear-gradient(90deg, #f06, #09f);
+}
+
+#createAlbumBtn:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
+
+/* Simple fade & scale animation */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes popIn {
+  from { transform: scale(0.9); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+

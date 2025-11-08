@@ -1,0 +1,111 @@
+:root {
+  --brand-700: #d63384;
+  --text-dark: #1a1a1a;
+  --text-light: #ffffff;
+}
+body {
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(135deg, #e0f7fa, #fce4ec);
+  margin: 0;
+  padding: 0;
+}
+header {
+  background: linear-gradient(to right, #fad6e5, #fff0f6);
+  padding: 10px 20px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Logo Section */
+.name {
+  display: flex;
+  align-items: center;
+}
+
+/* Gradient TUNEVAULT Logo */
+.gradient-logo {
+  display: inline-block;
+  font-weight: 800;
+  font-size: 22px;
+  background: linear-gradient(90deg, #ff9a3d, #f15bb5, #6a5acd);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
+}
+
+
+/* Navigation Links */
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 40px;
+}
+
+.nav-links a.active {
+  color: var(--brand-700);
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--text-dark);
+  font-weight: bold;
+  transition: color 0.2s ease;
+}
+
+.nav-links a:hover {
+  color: var(--brand-700);
+}
+
+/* Login Button */
+.login-btn {
+  background: var(--brand-700);
+  color: var(--text-light);
+  padding: 6px 14px;
+  border-radius: 20px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.2s ease;
+}
+
+.login-btn:hover {
+  background: #b02268;
+}
+
+.songs-page {
+  padding: 2rem;
+  background: #fde3f29d;
+  min-height: 100vh;
+}
+
+.songs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1rem;
+}
+
+.song-card {
+  background: linear-gradient(135deg, #00ffff, #ff69b4);
+  color: #3b2020;
+  font-weight: 600;
+  text-align: center;
+  padding: 1rem;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.song-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 18px rgba(255, 105, 180, 0.4);
+}
+

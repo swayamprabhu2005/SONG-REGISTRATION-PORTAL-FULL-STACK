@@ -1,0 +1,117 @@
+/* Root Theme */
+:root {
+  --brand-pink: #ff69b4;
+  --brand-cyan: #00ffff;
+  --text-dark: #1a1a1a;
+  --text-light: #ffffff;
+  --card-bg: #fef6fb;
+}
+
+/* Base Page Style */
+body {
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(135deg, #e0f7fa, #fce4ec);
+  margin: 0;
+  padding: 0;
+  color: var(--text-dark);
+}
+
+/* Main Container */
+.container {
+  max-width: 900px;
+  margin: 50px auto;
+  background: linear-gradient(135deg, #a1f7f7, #ffd6ec);
+  box-shadow: 0 6px 20px rgba(255, 105, 180, 0.2);
+  border-radius: 16px;
+  padding: 30px;
+  backdrop-filter: blur(8px);
+}
+
+/* Header Section */
+.album-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+/* Album Name Box */
+#albumName {
+  background: linear-gradient(135deg, var(--brand-cyan), #ffb6c1);
+  color: var(--text-dark);
+  font-size: 2rem;
+  font-weight: 700;
+  padding: 18px 28px;
+  border-radius: 14px;
+  box-shadow: 0 4px 12px rgba(0, 255, 255, 0.3);
+}
+
+/* Artist Name Box */
+#artistName {
+  background: linear-gradient(135deg, #ffb6c1, var(--brand-cyan));
+  color: var(--text-dark);
+  font-size: 1.5rem;
+  font-weight: 600;
+  padding: 15px 24px;
+  border-radius: 14px;
+  box-shadow: 0 4px 12px rgba(255, 105, 180, 0.3);
+}
+
+/* Songs Section */
+h3 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 1.6rem;
+  color: #222222;
+  background: linear-gradient(90deg, var(--brand-pink), var(--brand-cyan));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* Songs List */
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+/* Individual Song Card */
+li {
+  background: linear-gradient(135deg, #ccf2f2, #ffd6ec);
+  margin: 10px 0;
+  padding: 12px 16px;
+  border-radius: 10px;
+  box-shadow: 0 3px 8px rgba(255, 105, 180, 0.2);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+li:hover {
+  transform: scale(1.03);
+  box-shadow: 0 6px 15px rgba(0, 255, 255, 0.3);
+}
+
+/* Go Back Button */
+button {
+  display: block;
+  margin: 30px auto 0;
+  padding: 10px 20px;
+  background: linear-gradient(135deg, var(--brand-cyan), var(--brand-pink));
+  color: var(--text-light);
+  border: none;
+  border-radius: 25px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(255, 105, 180, 0.3);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(0, 255, 255, 0.4);
+}

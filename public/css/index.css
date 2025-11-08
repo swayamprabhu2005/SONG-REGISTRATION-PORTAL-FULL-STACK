@@ -1,0 +1,145 @@
+:root {
+  --brand-700: #d63384;
+  --brand-400: #f06292;
+  --text-dark: #1a1a1a;
+  --text-light: #ffffff;
+}
+
+body {
+  margin: 0;
+  font-family: "Poppins", Arial, sans-serif;
+  background-color: #000;
+  color: var(--text-light);
+}
+
+/* -------------------- Header & Navbar -------------------- */
+header {
+  background: linear-gradient(to right, #ffe6f0, #fff0f6);
+  padding: 10px 20px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Logo Section */
+.name {
+  display: flex;
+  align-items: center;
+}
+
+/* Gradient TUNEVAULT Logo */
+.gradient-logo {
+  display: inline-block;
+  font-weight: 800;
+  font-size: 22px;
+  background: linear-gradient(90deg, #ff9a3d, #f15bb5, #6a5acd);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
+}
+
+
+/* Navigation Links */
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 40px;
+}
+
+.nav-links a.active {
+  color: var(--brand-700);
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--text-dark);
+  font-weight: bold;
+  transition: color 0.2s ease;
+}
+
+.nav-links a:hover {
+  color: var(--brand-700);
+}
+
+/* Login Button */
+.login-btn {
+  background: var(--brand-700);
+  color: var(--text-light);
+  padding: 6px 14px;
+  border-radius: 20px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.2s ease;
+}
+
+.login-btn:hover {
+  background: #b02268;
+}
+
+/* -------------------- Hero Section -------------------- */
+.hero {
+  position: relative;
+  height: 90vh;
+  background: url("../images/index.jpg") no-repeat center center/cover;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 100px;
+  color: var(--text-light);
+  text-align: center;
+}
+
+.hero-content {
+  max-width: 600px;
+}
+
+.hero h1 {
+  display: inline-block;
+  font-size: 3.2rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+  background: linear-gradient(90deg, var(--brand-400), var(--brand-700));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  color: #f2f2f2;
+  margin-bottom: 30px;
+  line-height: 1.6;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.btn-primary {
+  background: var(--brand-700);
+  color: var(--text-light);
+  padding: 12px 28px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: transform 0.2s ease, background 0.3s ease;
+}
+
+.btn-primary:hover {
+  background: var(--brand-400);
+  transform: translateY(-2px);
+}
+

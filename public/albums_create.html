@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Create Album</title>
+  <link rel="stylesheet" href="./css/albums_create.css" />
+</head>
+
+<body>
+  <div class="container">
+    <h1>🎵 Create Album</h1>
+    <p id="artistDisplay"></p>
+
+    <form id="albumForm">
+      <label>Album Name</label>
+      <input type="text" id="album_name" required />
+
+      <label>Artist</label>
+      <input type="text" id="main_artist_name" required readonly />
+
+      <button type="submit">Create Album</button>
+    </form>
+
+    <button id="goBack">Go Back</button>
+  </div>
+
+  <!-- Modal for Success -->
+  <div id="modalSuccess">
+    <div class="modal-content">
+      <h2 id="modalMessage"></h2>
+    </div>
+  </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const artist = params.get("artist");
+
+    document.getElementById("artistDisplay").innerText =
+      artist ? `Creating album for: ${artist}` : "";
+
+    if (artist) {
+      document.getElementById("main_artist_name").value = artist;
+    }
+
+    // Handle album creation
+    document.getElementById("albumForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const album_name = document.getElementById("album_name").value;
+      const main_artist_name = document.getElementById("main_artist_name").value;
+
+      const response = await fetch("/api/albums/create", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ album_name, main_artist_name }),
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        // modal success box
+        const modal = document.getElementById("modalSuccess");
+        const messageBox = document.getElementById("modalMessage");
+
+        messageBox.textContent = `Album '${album_name}' created successfully for ${main_artist_name} with 10 songs.`;
+        modal.style.display = "flex";
+        document.body.classList.add("modal-blur");
+
+        // Auto-close after 3 seconds and redirect
+        setTimeout(() => {
+          modal.style.display = "none";
+          document.body.classList.remove("modal-blur");
+          window.location.href = "/";
+        }, 3000);
+      } else {
+        alert(result.error || "Error creating album.");
+      }
+    });
+
+    document.getElementById("goBack").onclick = () => history.back();
+  </script>
+</body>
+</html>

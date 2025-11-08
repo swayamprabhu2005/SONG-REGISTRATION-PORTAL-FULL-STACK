@@ -1,0 +1,223 @@
+:root {
+  --brand-700: #d63384;
+  --text-dark: #1a1a1a;
+  --text-light: #ffffff;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(135deg, #e0f7fa, #fce4ec);
+  margin: 0;
+  padding: 0;
+  color: #222;
+  min-height: 100vh;
+}
+
+/* ---------- Header & Navbar ---------- */
+header {
+  background: linear-gradient(to right, #ffe6f0, #fff0f6);
+  padding: 10px 20px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Logo Section */
+.name {
+  display: flex;
+  align-items: center;
+}
+
+/* Gradient TUNEVAULT Logo */
+.gradient-logo {
+  display: inline-block;
+  font-weight: 800;
+  font-size: 22px;
+  background: linear-gradient(90deg, #ff9a3d, #f15bb5, #6a5acd);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
+}
+
+/* Navigation Links */
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 40px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--text-dark);
+  font-weight: bold;
+  transition: color 0.2s ease;
+}
+
+.nav-links a.active {
+  color: var(--brand-700);
+}
+
+.nav-links a:hover {
+  color: var(--brand-700);
+}
+
+/* Login Button */
+.login-btn {
+  background: var(--brand-700);
+  color: var(--text-light);
+  padding: 6px 14px;
+  border-radius: 20px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.2s ease;
+}
+
+.login-btn:hover {
+  background: #b02268;
+}
+
+/* ---------- Artists Section (Grid Layout) ---------- */
+.artists-section {
+  padding: 40px 20px;
+  text-align: center;
+  background: linear-gradient(135deg, #e0f7fa, #fce4ec);
+  min-height: 100vh;
+}
+
+.artist-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 24px;
+  margin-top: 30px;
+  justify-items: center;
+}
+
+/* ---------- Artist Card ---------- */
+.artist-card {
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.3),
+    rgba(255, 182, 193, 0.25)
+  );
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 18px;
+  padding: 20px;
+  width: 90%;
+  max-width: 320px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.artist-card:hover {
+  transform: translateY(-5px);
+  background: linear-gradient(
+    145deg,
+    rgba(0, 255, 255, 0.25),
+    rgba(255, 105, 180, 0.25)
+  );
+}
+
+.artist-info h3 {
+  margin: 12px 0;
+}
+
+/* ---------- Cyan-Pink Buttons ---------- */
+.view-btn {
+  background: linear-gradient(135deg, #00ffff, #ff69b4);
+  border: none;
+  border-radius: 10px;
+  padding: 8px 18px;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.view-btn:hover {
+  background: linear-gradient(135deg, #00e5ff, #ff4da6);
+  transform: scale(1.05);
+}
+
+/* ---------- Expanded Song List (Inside Card) ---------- */
+.song-list-expanded {
+  margin-top: 15px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  padding: 12px;
+  max-height: 200px;
+  overflow-y: auto;
+  display: none; /* hidden until clicked */
+}
+
+.song-item {
+  background: linear-gradient(
+    90deg,
+    rgba(0, 255, 255, 0.2),
+    rgba(255, 105, 180, 0.2)
+  );
+  color: #111;
+  font-weight: 500;
+  margin: 8px auto;
+  border-radius: 10px;
+  padding: 10px 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: 0.25s ease;
+  max-width: 600px; /* keeps width moderate */
+  width: 85%; /* slightly responsive */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.song-item:hover {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 105, 180, 0.25),
+    rgba(0, 255, 255, 0.25)
+  );
+  transform: scale(1.02);
+}
+
+.song-tag {
+  background: rgba(255, 255, 255, 0.85);
+  color: #000;
+  padding: 5px 10px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.song-list-expanded::-webkit-scrollbar {
+  width: 8px;
+}
+.song-list-expanded::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+.song-list-expanded::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.35);
+}
+.back-btn {
+  margin-top: 8px;
+  padding: 8px 14px;
+  background: linear-gradient(135deg, #9b4d36e8, #773030);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.back-btn:hover {
+  background: linear-gradient(135deg, #9b4d36e8, #773030);
+}
