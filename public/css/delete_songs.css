@@ -134,28 +134,11 @@ form#deleteForm {
   font-size: 1rem;
   color: #444;
   margin-bottom: 1.4rem;
-}
-
-.modal-buttons {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-}
-
-.modal-buttons button {
-  background: linear-gradient(90deg, #f06, #09f);
-  color: white;
-  border: none;
-  padding: 0.6rem 1.4rem;
-  border-radius: 8px;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: 0.2s;
-}
-
-.modal-buttons button:hover {
-  opacity: 0.85;
-  transform: translateY(-2px);
+  background: linear-gradient(90deg, #ff9a3d, #f15bb5, #6a5acd);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
 }
 
 /* ---------- Animations ---------- */
