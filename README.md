@@ -24,11 +24,13 @@ Usage Guide:
 1. Open the web app.
 2. Register a new user or log in.
 3. Add new songs using theregister songs button.
-4. Update existing songs after it is verified. (ADD and UPDATE will only be accessible after login for security reasons so that the song registered can only be updated/deleted using the email it was registered with.)
-5. Contact the developers via the contact page feedback form.
-6. View the number of artists registered with us via the artists button in the nav bar and view in which songs they are main artists.
-7. View the all the songs and the details of those songs and which albums they belong to.
-8. View the albums and its details also the software will provide a create album button after the 10th song is registered with the same main artist name.
+4. Update existing songs after it is verified.
+5. Delete a song (note: if the song belongs to an album than that will also be deleted though the other songs that belong to that album will exist) 
+  (ADD, UPDATE AND DELETE will only be accessible after login for security reasons so that the song registered can only be updated/deleted using the email it was registered with.)
+7. Contact the developers via the contact page feedback form.
+8. View the number of artists registered with us via the artists button in the nav bar and view in which songs they are main artists.
+9. View the all the songs and the details of those songs and which albums they belong to.
+10. View the albums and its details also the software will provide a create album button after the 10th song is registered with the same main artist name.
 
 Future Scope: 
 The TuneVault platform can be expanded into a music trademarking and copyright protection service. 
