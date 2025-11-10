@@ -40,7 +40,7 @@ function createInput(container, value = "", readOnly = false) {
 }
 
 // Add new dynamic input fields
-["owner", "artist", "lyricist", "producer", "contributor"].forEach(type => {
+["owner", "artist", "lyricist", "producer"].forEach(type => {
   const btn = document.getElementById(`add${type.charAt(0).toUpperCase() + type.slice(1)}Btn`);
   btn?.addEventListener("click", () => {
     createInput(document.getElementById(`${type}Inputs`));
@@ -114,8 +114,6 @@ document.getElementById("verifyForm").addEventListener("submit", async e => {
   fillDynamic("ownerInputs", song.owners);
   fillDynamic("lyricistInputs", song.lyricists);
   fillDynamic("producerInputs", song.producers);
-  fillDynamic("contributorInputs", song.contributors);
-
   // Artists
   const artistContainer = document.getElementById("artistInputs");
   artistContainer.innerHTML = "";
@@ -163,7 +161,6 @@ document.getElementById("updateForm").addEventListener("submit", async e => {
     artists: collectValues("artistInputs"),
     lyricists: collectValues("lyricistInputs"),
     producers: collectValues("producerInputs"),
-    contributors: collectValues("contributorInputs"),
     type: type || "Primary"
   };
 

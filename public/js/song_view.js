@@ -18,7 +18,6 @@ document.addEventListener("DOMContentLoaded", async () => {
       artists,
       lyricists,
       producers,
-      contributors,
       sources,
       moreSongs,
     } = data;
@@ -69,10 +68,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     document.getElementById("producers").textContent =
       producers && producers.length > 0
         ? producers.map((p) => p.producer_name).join(", ")
-        : "N/A";
-    document.getElementById("contributors").textContent =
-      contributors && contributors.length > 0
-        ? contributors.map((c) => c.contributor_name).join(", ")
         : "N/A";
     document.getElementById("owners").textContent =
       sources && sources.length > 0

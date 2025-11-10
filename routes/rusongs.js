@@ -10,7 +10,6 @@ router.post("/register", async (req, res) => {
     song_name,
     genre,
     duration,
-    contributor_name,
     artist_name,
     lyricist_name,
     producer_name,
@@ -71,18 +70,6 @@ router.post("/register", async (req, res) => {
         if (name?.trim()) {
           await db.query(
             "INSERT INTO producers (producer_name, song_id) VALUES (?, ?)",
-            [name.trim(), songId]
-          );
-        }
-      }
-    }
-
-    // contributors
-    if (Array.isArray(contributor_name)) {
-      for (const name of contributor_name) {
-        if (name?.trim()) {
-          await db.query(
-            "INSERT INTO credits (contributor_name, song_id) VALUES (?, ?)",
             [name.trim(), songId]
           );
         }

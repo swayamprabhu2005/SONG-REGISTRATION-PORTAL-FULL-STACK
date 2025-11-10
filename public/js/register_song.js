@@ -54,7 +54,6 @@ document.addEventListener('DOMContentLoaded', () => {
     { countId: 'ownerCount', containerId: 'ownerInputs', fieldName: 'owner', label: 'Owner Name' },
     { countId: 'lyricistCount', containerId: 'lyricistInputs', fieldName: 'lyricist_name', label: 'Lyricist Name' },
     { countId: 'producerCount', containerId: 'producerInputs', fieldName: 'producer_name', label: 'Producer Name' },
-    { countId: 'contributorCount', containerId: 'contributorInputs', fieldName: 'contributor_name', label: 'Contributor Name' }
   ];
 
   // creating fields calls
@@ -180,7 +179,6 @@ document.addEventListener('DOMContentLoaded', () => {
       artist_name: formData.getAll('artist_name[]'),
       lyricist_name: formData.getAll('lyricist_name[]'),
       producer_name: formData.getAll('producer_name[]'),
-      contributor_name: formData.getAll('contributor_name[]'),
       regemail: currentUserEmail || null
     };
 

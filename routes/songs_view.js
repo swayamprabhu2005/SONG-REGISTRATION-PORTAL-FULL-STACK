@@ -39,7 +39,6 @@ router.get("/:id", async (req, res) => {
     const [artists] = await db.query(`SELECT artist_name FROM artists WHERE song_id = ?`, [id]);
     const [lyricists] = await db.query(`SELECT lyricist_name FROM lyricists WHERE song_id = ?`, [id]);
     const [producers] = await db.query(`SELECT producer_name FROM producers WHERE song_id = ?`, [id]);
-    const [contributors] = await db.query(`SELECT contributor_name FROM credits WHERE song_id = ?`, [id]);
     const [sources] = await db.query(`SELECT type, owner, regemail FROM source WHERE song_id = ?`, [id]);
 
     // Fetch songs from same album
@@ -57,7 +56,6 @@ router.get("/:id", async (req, res) => {
       artists,
       lyricists,
       producers,
-      contributors,
       sources,
       moreSongs
     });

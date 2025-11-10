@@ -96,19 +96,12 @@ router.get("/getSongDetails/:song_name", async (req, res) => {
       [song_id]
     );
 
-    const [contributors] = await db.query(
-      "SELECT contributor_name FROM credits WHERE song_id = ?",
-      [song_id]
-    );
-
     // Format arrays
     song.owners = owners.map(o => o.owner);
     song.source_types = owners.map(o => o.type);
     song.artists = artists.map(a => a.artist_name);
     song.lyricists = lyricists.map(l => l.lyricist_name);
     song.producers = producers.map(p => p.producer_name);
-    song.contributors = contributors.map(c => c.contributor_name);
-
     res.json(song);
   } catch (err) {
     console.error("Error fetching song details:", err);
@@ -143,7 +136,6 @@ router.post("/updateSong", async (req, res) => {
     );
     // outdated players
     await db.query("DELETE FROM source WHERE song_id = ?", [song_id]);
-    await db.query("DELETE FROM credits WHERE song_id = ?", [song_id]);
     await db.query("DELETE FROM artists WHERE song_id = ?", [song_id]);
     await db.query("DELETE FROM lyricists WHERE song_id = ?", [song_id]);
     await db.query("DELETE FROM producers WHERE song_id = ?", [song_id]);
@@ -153,14 +145,6 @@ router.post("/updateSong", async (req, res) => {
       await db.query(
         "INSERT INTO source (`type`, owner, song_id, regemail) VALUES (?, ?, ?, ?)",
         [updatedData.type || "Primary", owner, song_id, regemail]
-      );
-    }
-
-    // Insert updated contributors
-    for (const contributor of updatedData.contributors || []) {
-      await db.query(
-        "INSERT INTO credits (contributor_name, song_id) VALUES (?, ?)",
-        [contributor, song_id]
       );
     }
 
