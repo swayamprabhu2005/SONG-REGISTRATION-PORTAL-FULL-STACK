@@ -17,7 +17,7 @@ let userEmail = null;
   }
 })();
 
-// Create dynamic input rows
+// dynamic input rows
 function createInput(container, value = "", readOnly = false) {
   const div = document.createElement("div");
   div.classList.add("dynamic-row");
@@ -39,7 +39,7 @@ function createInput(container, value = "", readOnly = false) {
   container.appendChild(div);
 }
 
-// Add new dynamic input fields
+// new dynamic input fields
 ["owner", "artist", "lyricist", "producer"].forEach(type => {
   const btn = document.getElementById(`add${type.charAt(0).toUpperCase() + type.slice(1)}Btn`);
   btn?.addEventListener("click", () => {
@@ -65,7 +65,7 @@ document.getElementById("verifyForm").addEventListener("submit", async e => {
   const detailsRes = await fetch(`/upsongs/getSongDetails/${encodeURIComponent(songName)}`);
   const song = await detailsRes.json();
 
-  console.log("🎵 DEBUG: Song details from backend 👉", song);
+  console.log("DEBUG: Song details from backend", song);
 
   document.getElementById("verifySection").style.display = "none";
   document.getElementById("updateSection").style.display = "block";

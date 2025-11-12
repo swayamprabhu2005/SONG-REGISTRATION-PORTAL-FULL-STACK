@@ -1,4 +1,3 @@
-// /routes/albums.js
 import express from "express";
 import db from "../databases/db.js";
 

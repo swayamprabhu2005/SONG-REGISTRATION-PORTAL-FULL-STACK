@@ -134,7 +134,7 @@ router.post("/updateSong", async (req, res) => {
       "UPDATE songs SET genre = ?, duration = ? WHERE song_id = ?",
       [updatedData.genre, durationJSON, song_id]
     );
-    // outdated players
+    // flush data record from tables
     await db.query("DELETE FROM source WHERE song_id = ?", [song_id]);
     await db.query("DELETE FROM artists WHERE song_id = ?", [song_id]);
     await db.query("DELETE FROM lyricists WHERE song_id = ?", [song_id]);

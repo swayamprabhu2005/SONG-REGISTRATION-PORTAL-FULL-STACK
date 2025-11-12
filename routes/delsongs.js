@@ -28,7 +28,7 @@ router.post("/deleteSong", async (req, res) => {
     let mainArtistIdToDecrement = null;
 
     if (!song.album_id) {
-      // non-album song: find main artist by lowest artist_id for this song
+      // non album song
       const [artistRows] = await db.query(
         `
         SELECT a.artist_name
@@ -53,7 +53,8 @@ router.post("/deleteSong", async (req, res) => {
         console.log("No artist rows found for song before delete:", song.song_id);
       }
     } else {
-      // album song: find album's main artist
+      // album song
+      // finding album main artist
       const [albumArtistRows] = await db.query(
         `
         SELECT a.artist_name
@@ -83,11 +84,11 @@ router.post("/deleteSong", async (req, res) => {
       }
     }
 
-    // Delete requested song with ON DELETE CASCADE
+    // Delete requested song ON DELETE CASCADE
     await db.query("DELETE FROM songs WHERE song_id = ?", [song.song_id]);
 
     if (song.album_id) {
-      //album_id= Null of remaining songs in this album
+      //album_id = Null of remaining songs in this album
       await db.query("UPDATE songs SET album_id = NULL WHERE album_id = ? AND song_id != ?", [
         song.album_id,
         song.song_id,

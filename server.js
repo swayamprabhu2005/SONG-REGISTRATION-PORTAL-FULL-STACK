@@ -94,7 +94,6 @@ app.use((req, res) => {
   res.status(404).send("ALT F4");
 });
 
-// ---------- Server ----------
 app.listen(PORT, () => {
   console.log(`http://localhost:${PORT}`);
 });

@@ -59,6 +59,3 @@ CREATE TABLE source (
   FOREIGN KEY (song_id) REFERENCES songs(song_id)
     ON DELETE CASCADE
 );
-
-
-
