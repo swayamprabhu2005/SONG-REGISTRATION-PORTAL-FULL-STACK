@@ -6,6 +6,33 @@
     <title>TUNEVAULT | Artists</title>
     <link rel="stylesheet" href="./css/emailphoto.css" />
     <link rel="stylesheet" href="/css/artists.css" />
+    <style>
+      .search-bar {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 1em 0;
+        gap: 0.5em;
+      }
+      .search-bar input {
+        padding: 0.6em 1em;
+        width: 250px;
+        border-radius: 10px;
+        border: 1px solid #ccc;
+        font-size: 1em;
+      }
+      .search-bar button {
+        padding: 0.6em 1.2em;
+        border: none;
+        background: linear-gradient(90deg, #ff7a00, #ff3d00);
+        color: white;
+        border-radius: 10px;
+        cursor: pointer;
+      }
+      .search-bar button:hover {
+        opacity: 0.9;
+      }
+    </style>
   </head>
   <body>
     <header>
@@ -24,10 +51,22 @@
         <a href="/login.html" class="login-btn">Login</a>
       </nav>
     </header>
+
     <main>
       <section class="artists-section" id="artists-section">
         <div class="artist-pane">
           <h1>Artists</h1>
+
+          <!-- Search Bar -->
+          <div class="search-bar">
+            <input
+              type="text"
+              id="searchInput"
+              placeholder="Search artists by name..."
+            />
+            <button id="searchBtn">Search</button>
+          </div>
+
           <div id="artistGrid" class="artist-grid"></div>
         </div>
 
@@ -38,11 +77,35 @@
     </main>
 
     <script>
+      const grid = document.getElementById("artistGrid");
+      const searchInput = document.getElementById("searchInput");
+      const searchBtn = document.getElementById("searchBtn");
+
       async function loadArtists() {
         const res = await fetch("/artists/api/list");
         const artists = await res.json();
-        const grid = document.getElementById("artistGrid");
+        displayArtists(artists);
+      }
+
+      async function searchArtists() {
+        const query = searchInput.value.trim();
+        if (!query) {
+          loadArtists();
+          return;
+        }
+        const res = await fetch(
+          `/artists/api/search?name=${encodeURIComponent(query)}`
+        );
+        const artists = await res.json();
+        displayArtists(artists);
+      }
+
+      function displayArtists(artists) {
         grid.innerHTML = "";
+        if (artists.length === 0) {
+          grid.innerHTML = "<p>No artists found.</p>";
+          return;
+        }
         artists.forEach((a) => {
           const card = document.createElement("div");
           card.className = "artist-card";
@@ -63,7 +126,7 @@
         const list = document.getElementById("artistSongs");
         list.style.display = "block";
         list.innerHTML = `<h2>Songs by ${data.artistName}</h2>
-      <button class="back-btn" onclick="scrollToArtists()">View Artists</button>`;
+          <button class="back-btn" onclick="scrollToArtists()">View Artists</button>`;
         data.songs.forEach((song) => {
           list.innerHTML += `
           <div class="song-item">
@@ -75,12 +138,22 @@
             }
           </div>`;
         });
-        document.getElementById("artistSongs").scrollIntoView({ behavior: "smooth" });
+        document
+          .getElementById("artistSongs")
+          .scrollIntoView({ behavior: "smooth" });
       }
 
       function scrollToArtists() {
-        document.getElementById("artists-section").scrollIntoView({ behavior: "smooth" });
+        document
+          .getElementById("artists-section")
+          .scrollIntoView({ behavior: "smooth" });
       }
+
+      // Event listeners for search
+      searchBtn.addEventListener("click", searchArtists);
+      searchInput.addEventListener("keyup", (e) => {
+        if (e.key === "Enter") searchArtists();
+      });
 
       loadArtists();
     </script>

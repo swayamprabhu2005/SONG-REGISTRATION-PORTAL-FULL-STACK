@@ -3,7 +3,6 @@ import db from "../databases/db.js";
 
 const router = express.Router();
 
-// get all songs
 router.get("/all", async (req, res) => {
   try {
     const [songs] = await db.query(`
@@ -19,17 +18,39 @@ router.get("/all", async (req, res) => {
   }
 });
 
-// get song details using id
+router.get("/search", async (req, res) => {
+  const { name } = req.query;
+  try {
+    const [songs] = await db.query(
+      `
+      SELECT s.song_id, s.song_name, s.genre, s.duration, a.album_name
+      FROM songs s
+      LEFT JOIN albums a ON s.album_id = a.album_id
+      WHERE s.song_name LIKE ?
+      ORDER BY s.song_id DESC
+      `,
+      [`%${name}%`]
+    );
+    res.json(songs);
+  } catch (err) {
+    console.error("Error searching songs:", err);
+    res.status(500).json({ message: "Error searching songs" });
+  }
+});
+
 router.get("/:id", async (req, res) => {
   const { id } = req.params;
   try {
     // main song info
-    const [[song]] = await db.query(`
+    const [[song]] = await db.query(
+      `
       SELECT s.*, a.album_name
       FROM songs s
       LEFT JOIN albums a ON s.album_id = a.album_id
       WHERE s.song_id = ?
-    `, [id]);
+      `,
+      [id]
+    );
 
     if (!song) {
       return res.status(404).json({ message: "Song not found" });
@@ -44,11 +65,14 @@ router.get("/:id", async (req, res) => {
     // Fetch songs from same album
     let moreSongs = [];
     if (song.album_id) {
-      [moreSongs] = await db.query(`
+      [moreSongs] = await db.query(
+        `
         SELECT song_id, song_name
         FROM songs
         WHERE album_id = ? AND song_id != ?
-      `, [song.album_id, id]);
+        `,
+        [song.album_id, id]
+      );
     }
 
     res.json({
@@ -57,7 +81,7 @@ router.get("/:id", async (req, res) => {
       lyricists,
       producers,
       sources,
-      moreSongs
+      moreSongs,
     });
   } catch (err) {
     console.error("Error fetching song details:", err);

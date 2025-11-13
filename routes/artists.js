@@ -12,7 +12,6 @@ router.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "../public", "artists.html"));
 });
 
-// API: Fetch All Unique Artists
 router.get("/api/list", async (req, res) => {
   try {
     const [artists] = await db.query(`
@@ -28,11 +27,30 @@ router.get("/api/list", async (req, res) => {
   }
 });
 
-// API: Fetch All Songs with Main Artist Tag
+router.get("/api/search", async (req, res) => {
+  const { name } = req.query;
+  try {
+    const [artists] = await db.query(
+      `
+      SELECT DISTINCT artist_name 
+      FROM artists 
+      WHERE artist_name LIKE ? 
+      ORDER BY artist_name ASC;
+      `,
+      [`%${name}%`]
+    );
+    res.json(artists);
+  } catch (error) {
+    console.error("Error searching artists:", error);
+    res.status(500).json({ message: "Error searching artists." });
+  }
+});
+
 router.get("/api/:artistName/songs", async (req, res) => {
   const { artistName } = req.params;
   try {
-    const [songs] = await db.query(`
+    const [songs] = await db.query(
+      `
       SELECT 
         s.song_id,
         s.song_name,
@@ -48,7 +66,9 @@ router.get("/api/:artistName/songs", async (req, res) => {
       JOIN artists a ON s.song_id = a.song_id
       WHERE a.artist_name = ?
       ORDER BY s.song_name ASC;
-    `, [artistName]);
+      `,
+      [artistName]
+    );
 
     res.json({ artistName, songs });
   } catch (error) {

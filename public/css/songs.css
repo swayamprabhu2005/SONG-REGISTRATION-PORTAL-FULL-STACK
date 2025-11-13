@@ -109,3 +109,31 @@ header {
   box-shadow: 0 6px 18px rgba(255, 105, 180, 0.4);
 }
 
+.search-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1em 0;
+  gap: 0.5em;
+}
+
+.search-bar input {
+  padding: 0.6em 1em;
+  width: 250px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  font-size: 1em;
+}
+
+.search-bar button {
+  padding: 0.6em 1.2em;
+  border: none;
+  background: linear-gradient(90deg, #ff7a00, #ff3d00);
+  color: white;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.search-bar button:hover {
+  opacity: 0.9;
+}
